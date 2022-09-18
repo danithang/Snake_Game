@@ -40,17 +40,19 @@ while is_game_on:
 
     # Detect collision with wall...basically saying if the snake head goes past these points
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        is_game_on = False
-        score.game_over()
+        score.reset()
+        snake.reset()
 
     # Detect collision with tail
     # [1:] is slicing which means not counting the head as a segment just the body and passing it to the
     # elif statement for the body segments saying if each segment of snake.head has a distance of less than 10 then
     # that is a collision...basically if head hits the body less than 10 in distance
-    for segment in snake.all_snakes[1:]:
-        if snake.head.distance(segment) < 10:
-            is_game_on = False
-            score.game_over()
+    for segment in snake.all_snakes:
+        if segment == snake.head:
+            pass
+        elif snake.head.distance(segment) < 10:
+            score.reset()
+            snake.reset()
 
 
 screen.exitonclick()

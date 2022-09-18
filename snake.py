@@ -33,6 +33,16 @@ class Snake:
         new_snake.goto(position)
         self.all_snakes.append(new_snake)
 
+    # deleting all snakes added to the body after the snake hits the wall...basically resetting the game
+    def reset(self):
+        # for loop to get rid of the old snake after game resets...putting it somewhere off the screen
+        for seg in self.all_snakes:
+            seg.goto(1000, 1000)
+        self.all_snakes.clear()
+        # creating a new snake from the beginning of the game after the snake from previous game is deleted
+        self.create_snake()
+        self.head = self.all_snakes[0]
+
     # extending snake...[-1] means counting from end of list...for example [1, 2, 3] 3 would be considered in
     # position -1...getting hold of position() which is a turtle class, adding new segment(add_segment) to same
     # position as last position
