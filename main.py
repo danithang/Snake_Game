@@ -47,7 +47,7 @@ while is_game_on:
     # [1:] is slicing which means not counting the head as a segment just the body and passing it to the
     # elif statement for the body segments saying if each segment of snake.head has a distance of less than 10 then
     # that is a collision...basically if head hits the body less than 10 in distance
-    for segment in snake.all_snakes:
+    for segment in snake.all_snakes[1:]:
         if segment == snake.head:
             pass
         elif snake.head.distance(segment) < 10:
